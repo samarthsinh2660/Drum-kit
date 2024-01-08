@@ -4,10 +4,12 @@ for(var i = 0; i<n; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
    var n = this.innerHTML;
    makesound(n);
+   animation(n);
 
 });
 document.addEventListener("keydown", function(event) {
   makesound(event.key);
+  animation(event.key)
 })
   
 function makesound(key) {
@@ -43,6 +45,15 @@ function makesound(key) {
     default:
       break;
    } 
+}
+function animation(currentkey) {
+  var n1 = document.querySelector("." + currentkey);
+  n1.classList.add("pressed");
+
+ setTimeout(function(){
+    n1.classList.remove("pressed");
+ }, 100)
+
 }
 }
 //var audio = new Audio("sounds/crash.mp3");
